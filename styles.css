@@ -68,7 +68,7 @@ body {
 
 button {
   /* backdrop-filter: blur(3px); */
-  background: var(--liquid-glass-small-bg);
+  /* background: var(--liquid-glass-small-bg); */
   border-radius: 16px;
   border: unset;
   color: var(--text);
@@ -81,7 +81,7 @@ button {
 
 button::before {
   /* pointer-events: none; */
-  backdrop-filter: blur(calc(20px + var(--liquid-glass-small-bg-blur-addend)));
+  /* backdrop-filter: blur(calc(20px + var(--liquid-glass-small-bg-blur-addend))); */
   border-radius: 16px;
   content: "";
   height: 100%;
@@ -95,7 +95,7 @@ button::before {
 }
 
 button::after {
-  backdrop-filter: blur(calc(10px + var(--liquid-glass-small-bg-blur-addend)));
+  /* backdrop-filter: blur(calc(10px + var(--liquid-glass-small-bg-blur-addend))); */
   border-radius: 16px;
   box-shadow: inset 1px 1px var(--liquid-glass-outline);
   content: "";
@@ -107,4 +107,40 @@ button::after {
   top: 0px;
   width: 100%;
   z-index: -1;
+}
+
+.small {
+  background: var(--liquid-glass-small-bg);
+}
+
+.small::before {
+  backdrop-filter: blur(calc(20px + var(--liquid-glass-small-bg-blur-addend)));
+}
+
+.small::after {
+  backdrop-filter: blur(calc(10px + var(--liquid-glass-small-bg-blur-addend)));
+}
+
+.medium {
+  background: var(--liquid-glass-medium-bg);
+}
+
+.medium::before {
+  backdrop-filter: blur(calc(20px + var(--liquid-glass-medium-bg-blur-addend)));
+}
+
+.medium::after {
+  backdrop-filter: blur(calc(10px + var(--liquid-glass-medium-bg-blur-addend)));
+}
+
+.large {
+  background: var(--liquid-glass-large-bg);
+}
+
+.large::before {
+  backdrop-filter: blur(calc(20px + var(--liquid-glass-large-bg-blur-addend)));
+}
+
+.large::after {
+  backdrop-filter: blur(calc(10px + var(--liquid-glass-large-bg-blur-addend)));
 }
