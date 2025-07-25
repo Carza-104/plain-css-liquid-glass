@@ -1,0 +1,84 @@
+:root {
+  color-scheme: light dark;
+  --sans-serif-font-family: ui-sans-serif, "SF Pro", Roboto, "Fira Sans", Oxygen,
+    Ubuntu, "Segoe UI", "Helvetica Neue", "Noto Sans", Arial, sans-serif;
+  --liquid-glass-bg: rgb(120, 120, 120, 0.06);
+  --text: white;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --liquid-glass-bg: rgb(247, 247, 247, 0.049);
+    --text: black;
+  }
+}
+
+* {
+  margin-block-end: 0px;
+  margin-inline-end: 0px;
+  margin-block-start: 0px;
+  margin-inline-start: 0px;
+  text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*:focus {
+  outline: unset;
+}
+
+body {
+  align-items: center;
+  background-size: cover;
+  color: var(--text);
+  display: flex;
+  font-family: var(--sans-serif-font-family);
+  font-size: 17px;
+  font-weight: 400;
+  height: 100vh;
+  justify-content: center;
+  line-height: 22px;
+  text-size-adjust: none;
+}
+
+button {
+  /* backdrop-filter: blur(3px); */
+  background: var(--liquid-glass-bg);
+  border-radius: 16px;
+  border: unset;
+  color: var(--text);
+  cursor: grab;
+  font-size: 17px;
+  padding: 32px;
+  position: absolute;
+  z-index: 1;
+}
+
+button::before {
+  /* pointer-events: none; */
+  backdrop-filter: blur(23px);
+  border-radius: 16px;
+  content: "";
+  height: 100%;
+  left: 0px;
+  mask-image: radial-gradient(black, transparent);
+  mix-blend-mode: color-dodge;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index: -1;
+}
+
+button::after {
+  backdrop-filter: blur(13px);
+  border-radius: 16px;
+  box-shadow: inset 1px 1px rgb(255, 255, 255, 0.5);
+  content: "";
+  height: 100%;
+  left: 0px;
+  mix-blend-mode: color-dodge;
+  opacity: 50%;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  z-index: -1;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="#1f003f"
+    />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="#6f2fcf"
+    /> -->
+    <link rel="icon" href="static/favicon.ico" />
+    <title>Home</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button id="test">
+      <p>Drag this</p>
+    </button>
+    <script>
+      window.addEventListener("load", () => {
+        const randomIndex = Math.floor(Math.random() * 8) + 1;
+        // Set the background image:
+        document.body.style.backgroundImage = `url('images/${randomIndex}.jpg')`;
+      });
+
+      const button = document.getElementById("test");
+      let offsetX, offsetY;
+
+      // Mouse events:
+      button.addEventListener("mousedown", (event) => {
+        offsetX = event.clientX - button.getBoundingClientRect().left;
+        offsetY = event.clientY - button.getBoundingClientRect().top;
+        button.style.cursor = "grabbing";
+        document.addEventListener("mousemove", mouseMoveHandler);
+        document.addEventListener("mouseup", mouseUpHandler);
+      });
+
+      // Touch events:
+      button.addEventListener("touchstart", (event) => {
+        const touch = event.touches[0];
+        offsetX = touch.clientX - button.getBoundingClientRect().left;
+        offsetY = touch.clientY - button.getBoundingClientRect().top;
+        button.style.cursor = "grabbing";
+        document.addEventListener("touchmove", touchMoveHandler);
+        document.addEventListener("touchend", touchEndHandler);
+      });
+
+      // Mouse events:
+      function mouseMoveHandler(event) {
+        button.style.left = event.clientX - offsetX + "px";
+        button.style.top = event.clientY - offsetY + "px";
+      }
+
+      // Touch events:
+      function touchMoveHandler(event) {
+        const touch = event.touches[0];
+        button.style.left = touch.clientX - offsetX + "px";
+        button.style.top = touch.clientY - offsetY + "px";
+        // Prevent scrolling while dragging.
+        event.preventDefault();
+      }
+
+      // Mouse events:
+      function mouseUpHandler() {
+        document.removeEventListener("mousemove", mouseMoveHandler);
+        document.removeEventListener("mouseup", mouseUpHandler);
+        button.style.cursor = "grab";
+      }
+
+      // Touch events:
+      function touchEndHandler() {
+        document.removeEventListener("touchmove", touchMoveHandler);
+        document.removeEventListener("touchend", touchEndHandler);
+        button.style.cursor = "grab";
+      }
+    </script>
+  </body>
+</html>
