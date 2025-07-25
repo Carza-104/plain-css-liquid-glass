@@ -39,6 +39,7 @@ body {
   height: 100vh;
   justify-content: center;
   line-height: 22px;
+  overflow: hidden;
   text-size-adjust: none;
 }
 
