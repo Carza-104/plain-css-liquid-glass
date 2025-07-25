@@ -2,7 +2,7 @@
   color-scheme: light dark;
   --sans-serif-font-family: ui-sans-serif, "SF Pro", Roboto, "Fira Sans", Oxygen,
     Ubuntu, "Segoe UI", "Helvetica Neue", "Noto Sans", Arial, sans-serif;
-  --text: white;
+  --text: black;
 
   --liquid-glass-outline: rgb(255, 255, 255, 0.5);
   --liquid-glass-primary-bg-blend-mode: color-dodge;
