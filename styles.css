@@ -2,16 +2,39 @@
   color-scheme: light dark;
   --sans-serif-font-family: ui-sans-serif, "SF Pro", Roboto, "Fira Sans", Oxygen,
     Ubuntu, "Segoe UI", "Helvetica Neue", "Noto Sans", Arial, sans-serif;
-  --liquid-glass-bg: rgb(120, 120, 120, 0.06);
-  --bg-blend-mode: color-dodge;
   --text: white;
+
+  --liquid-glass-outline: rgb(255, 255, 255, 0.5);
+  --liquid-glass-primary-bg-blend-mode: color-dodge;
+  --liquid-glass-secondary-bg-blend-mode: color-dodge;
+
+  --liquid-glass-small-bg-blur-addend: 3px;
+  --liquid-glass-medium-bg-blur-addend: 10px;
+  --liquid-glass-large-bg-blur-addend: 12.5px;
+
+  /* --liquid-glass-small-bg: rgb(247, 247, 247, 0.56);
+  --liquid-glass-medium-bg: rgb(250, 250, 250, 0.41);
+  --liquid-glass-large-bg: rgb(245, 245, 245, 0.6); */
+  --liquid-glass-small-bg: rgb(247, 247, 247, 0.09);
+  --liquid-glass-medium-bg: rgb(250, 250, 250, 0.07);
+  --liquid-glass-large-bg: rgb(245, 245, 245, 0.1);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --liquid-glass-bg: rgb(0, 0, 0, 0.2);
-    --bg-blend-mode: color-burn;
     --text: white;
+
+    --liquid-glass-outline: white;
+    --liquid-glass-primary-bg-blend-mode: color-burn;
+    --liquid-glass-secondary-bg-blend-mode: unset;
+
+    /* --liquid-glass-small-bg: rgb(0, 0, 0, 0.37);
+    --liquid-glass-medium-bg: rgb(0, 0, 0, 0.3);
+    --liquid-glass-large-bg: rgb(0, 0, 0, 0.3); */
+    --liquid-glass-small-bg: rgb(0, 0, 0, 0.06);
+    --liquid-glass-medium-bg: rgb(0, 0, 0, 0.05);
+    --liquid-glass-large-bg: rgb(0, 0, 0, 0.05);
   }
 }
 
@@ -45,7 +68,7 @@ body {
 
 button {
   /* backdrop-filter: blur(3px); */
-  background: var(--liquid-glass-bg);
+  background: var(--liquid-glass-small-bg);
   border-radius: 16px;
   border: unset;
   color: var(--text);
@@ -58,13 +81,13 @@ button {
 
 button::before {
   /* pointer-events: none; */
-  backdrop-filter: blur(23px);
+  backdrop-filter: blur(calc(20px + var(--liquid-glass-small-bg-blur-addend)));
   border-radius: 16px;
   content: "";
   height: 100%;
   left: 0px;
   mask-image: radial-gradient(black, transparent);
-  mix-blend-mode: var(--bg-blend-mode);
+  mix-blend-mode: var(--liquid-glass-primary-bg-blend-mode);
   position: absolute;
   top: 0px;
   width: 100%;
@@ -72,13 +95,13 @@ button::before {
 }
 
 button::after {
-  backdrop-filter: blur(13px);
+  backdrop-filter: blur(calc(10px + var(--liquid-glass-small-bg-blur-addend)));
   border-radius: 16px;
-  box-shadow: inset 1px 1px rgb(255, 255, 255, 0.5);
+  box-shadow: inset 1px 1px var(--liquid-glass-outline);
   content: "";
   height: 100%;
   left: 0px;
-  mix-blend-mode: var(--bg-blend-mode);
+  mix-blend-mode: var(--liquid-glass-secondary-bg-blend-mode);
   opacity: 50%;
   position: absolute;
   top: 0px;
